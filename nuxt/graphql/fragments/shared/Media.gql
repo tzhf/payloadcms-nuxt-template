@@ -1,0 +1,39 @@
+fragment Media on Media {
+  id
+  url
+  filename
+  mimeType
+  width
+  height
+  description
+  sizes {
+    xs {
+      url
+      width
+    }
+    sm {
+      url
+      width
+    }
+    md {
+      url
+      width
+    }
+    lg {
+      url
+      width
+    }
+    xl {
+      url
+      width
+    }
+    xxl {
+      url
+      width
+    }
+    xxxl {
+      url
+      width
+    }
+  }
+}

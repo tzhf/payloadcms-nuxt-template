@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/admin/:path*",
+      "destination": "https://nuxt-payload-template-payloadcms.vercel.app/admin/:path*"
+    },
+    {
+      "source": "/payload-api/:path*",
+      "destination": "https://nuxt-payload-template-payloadcms.vercel.app/payload-api/:path*"
+    }
+  ]
+}

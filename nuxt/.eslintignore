@@ -1,0 +1,8 @@
+.nuxt
+.nitro
+.output
+build
+graphql/index.js
+node_modules
+graphql/possibleTypes.json
+payload/types.d.ts

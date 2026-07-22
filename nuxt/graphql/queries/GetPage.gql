@@ -1,0 +1,11 @@
+query GetPage($slug: String!) {
+  Pages(limit: 1, where: { slug: { equals: $slug } }) {
+    docs {
+      ...Page
+      layout {
+        ...HeroBlock
+        ...TextBlock
+      }
+    }
+  }
+}

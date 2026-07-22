@@ -1,0 +1,14 @@
+fragment SeoImage on SeoImage {
+  id
+  alt
+  url
+  width
+  height
+  sizes {
+    opengraph {
+      url
+      width
+      height
+    }
+  }
+}

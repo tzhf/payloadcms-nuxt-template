@@ -1,0 +1,48 @@
+{
+  "name": "nuxt",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs",
+    "lint": "eslint --ext .js,.ts,.vue .",
+    "generate": "npm run generate:schema && npm run generate:types",
+    "generate:schema": "node ./graphql/schemaQuery.mjs",
+    "generate:types": "graphql-codegen -r dotenv/config --config codegen.ts && del graphql\\index.js & move graphql\\exports.d.ts graphql\\index.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": "eslint --fix",
+    "*": "prettier -w -u"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^7.1.2",
+    "@graphql-codegen/typescript-vue-apollo": "^5.0.1",
+    "@nuxt/icon": "^2.2.3",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "prettier": "^3.8.4",
+    "prettier-plugin-tailwindcss": "^0.8.0"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxtjs/apollo": "^5.0.0-alpha.16",
+    "@nuxtjs/seo": "^5.3.0",
+    "@payloadcms/live-preview": "^3.85.1",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.1",
+    "@takumi-rs/core": "^2.0.0-rc.16",
+    "@vueuse/core": "^14.3.0",
+    "@vueuse/nuxt": "^14.3.0",
+    "dotenv": "^17.4.2",
+    "motion-v": "^2.3.0",
+    "nuxt": "^4.4.8",
+    "tailwindcss": "^4.3.1"
+  }
+}

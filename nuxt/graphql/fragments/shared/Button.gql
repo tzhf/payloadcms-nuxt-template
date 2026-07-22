@@ -1,0 +1,9 @@
+fragment Button on Button {
+  blockType
+  label
+  url
+  color
+  variant
+  size
+  openInNewTab
+}

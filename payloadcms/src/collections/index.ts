@@ -1,0 +1,8 @@
+export { default as Images } from './Images'
+export { default as Media } from './Media'
+export { default as SeoImages } from './SeoImages'
+export { default as SVGs } from './SVGs'
+export { default as Videos } from './Videos'
+export { default as VideoThumbnails } from './VideoThumbnails'
+export { default as Staff } from './Staff'
+export { default as Pages } from './Pages'

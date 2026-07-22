@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* @import './fonts-dynamic.css'; */
+
+@theme {
+  --font-body: var(--font-body);
+  --font-heading: var(--font-heading);
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+  --color-primary: #000000;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f4f4f5;
+  --color-secondary-foreground: #111111;
+  --color-muted: #f4f4f5;
+  --color-muted-foreground: #71717a;
+  --color-border: #e4e4e7;
+  --color-accent: #f4f4f5;
+  --color-accent-foreground: #111111;
+}
+
+@layer base {
+  html {
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+svg,
+svg * {
+  @apply focus:outline-none;
+}
+
+.layout-enter-active,
+.layout-leave-active,
+.page-enter-active,
+.page-leave-active {
+  @apply transition-opacity duration-250 ease-out;
+}
+
+.layout-enter-from,
+.layout-leave-to,
+.page-enter-from,
+.page-leave-to {
+  @apply opacity-0;
+}

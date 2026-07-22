@@ -1,0 +1,6 @@
+fragment SVG on SVG {
+  id
+  url
+  width
+  height
+}

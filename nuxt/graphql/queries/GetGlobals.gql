@@ -1,0 +1,66 @@
+query GetGlobals {
+  SiteSettings {
+    typography {
+      fontBody
+      fontHeading
+      fontSize
+    }
+    colors {
+      background
+      foreground
+      primary
+      primaryForeground
+      secondary
+      secondaryForeground
+      muted
+      mutedForeground
+      border
+      accent
+      accentForeground
+    }
+    navbar {
+      textColor
+      backgroundColor
+      backgroundColorScroll
+      logo {
+        ...SVG
+      }
+      links {
+        label
+        type
+        url
+        anchor
+        openInNewTab
+        page {
+          id
+          title
+          slug
+        }
+      }
+      buttons {
+        ...Button
+      }
+    }
+    footer {
+      links {
+        label
+        type
+        url
+        anchor
+        openInNewTab
+        page {
+          id
+          title
+          slug
+        }
+      }
+    }
+    meta {
+      title
+      description
+      image {
+        ...SeoImage
+      }
+    }
+  }
+}

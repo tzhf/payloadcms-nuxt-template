@@ -1,0 +1,12 @@
+fragment Page on Page {
+  id
+  title
+  slug
+  meta {
+    title
+    description
+    image {
+      ...SeoImage
+    }
+  }
+}

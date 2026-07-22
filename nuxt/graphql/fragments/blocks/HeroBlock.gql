@@ -1,0 +1,19 @@
+fragment HeroBlock on HeroBlock {
+  blockType
+  anchorId
+  title
+  subtitle
+  image {
+    ...Media
+  }
+  buttons {
+    ...Button
+  }
+  layout
+  splitRatio
+  mediaPosition
+  mediaOrder
+  overlayOpacity
+  textAlignment
+  minHeight
+}
