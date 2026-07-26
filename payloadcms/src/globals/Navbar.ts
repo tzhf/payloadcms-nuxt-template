@@ -1,7 +1,7 @@
 import type { Tab } from 'payload'
 
-import { colorField, link } from '~/fields'
-import Button from '~/blocks/ui/Button'
+import { colorField, linkField } from '~/fields'
+import { Button } from '~/blocks/ui/Button'
 
 export const Navbar: Tab = {
   label: 'Navbar',
@@ -39,7 +39,7 @@ export const Navbar: Tab = {
         {
           name: 'links',
           type: 'array',
-          fields: link,
+          fields: linkField,
         },
         {
           name: 'buttons',

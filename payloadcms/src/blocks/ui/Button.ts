@@ -1,6 +1,6 @@
 import type { Block } from 'payload'
 
-const Button: Block = {
+export const Button: Block = {
   slug: 'button',
   interfaceName: 'Button',
   fields: [
@@ -38,5 +38,3 @@ const Button: Block = {
     { name: 'openInNewTab', type: 'checkbox', defaultValue: false },
   ],
 }
-
-export default Button

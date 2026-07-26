@@ -1,5 +1,5 @@
 import type { Tab } from 'payload'
-import { link } from '~/fields'
+import { linkField } from '~/fields'
 
 export const Footer: Tab = {
   label: 'Footer',
@@ -11,7 +11,7 @@ export const Footer: Tab = {
         {
           name: 'links',
           type: 'array',
-          fields: link,
+          fields: linkField,
         },
       ],
     },

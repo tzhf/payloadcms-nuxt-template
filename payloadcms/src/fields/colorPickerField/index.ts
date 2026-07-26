@@ -2,7 +2,7 @@ import { TextField } from 'payload'
 import { ColorPickerArgs } from './types'
 import { text } from 'payload/shared'
 
-const colorField = (options?: ColorPickerArgs): TextField => {
+export const colorField = (options?: ColorPickerArgs): TextField => {
   const baseField: TextField = {
     name: options?.name || 'color',
     type: 'text',
@@ -11,7 +11,7 @@ const colorField = (options?: ColorPickerArgs): TextField => {
       description: options?.description,
       components: {
         Field: {
-          path: '@/fields/color-picker',
+          path: '@/fields/colorPickerField/field',
           clientProps: {
             colorPresets: options?.colorPresets || [],
             debounceDelay: options?.debounceDelay || 300,
@@ -19,7 +19,7 @@ const colorField = (options?: ColorPickerArgs): TextField => {
           },
         },
         Cell: {
-          path: '@/fields/color-picker#ColorCell',
+          path: '@/fields/colorPickerField/field#ColorCell',
           clientProps: {},
         },
       },
@@ -38,5 +38,3 @@ const colorField = (options?: ColorPickerArgs): TextField => {
 
   return baseField
 }
-
-export default colorField

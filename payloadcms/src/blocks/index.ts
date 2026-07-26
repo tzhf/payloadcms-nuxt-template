@@ -1,3 +1,4 @@
-export { default as HeroBlock } from './HeroBlock'
-export { default as TextBlock } from './TextBlock'
-export { default as Button } from './ui/Button'
+export { HeroBlock } from './HeroBlock'
+export { TextBlock } from './TextBlock'
+export { Button } from './ui/Button'
+export { GridBlock } from './layout/GridBlock'

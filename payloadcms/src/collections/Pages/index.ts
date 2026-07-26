@@ -1,16 +1,19 @@
 import { livePreviewBreakpoints } from '~/utils'
 import { isSuperAdmin } from '~/access'
 
-import { HeroBlock, TextBlock } from '../../blocks'
 import type { CollectionConfig } from 'payload'
-import { slug } from '~/fields'
+import { slugField, layoutField } from '~/fields'
 
 const Pages: CollectionConfig = {
   slug: 'pages',
+
   labels: {
     singular: '📄 Page',
     plural: '📄 Pages',
   },
+
+  defaultSort: 'title',
+
   admin: {
     useAsTitle: 'title',
     group: '📄 Content',
@@ -25,8 +28,7 @@ const Pages: CollectionConfig = {
       breakpoints: livePreviewBreakpoints,
     },
   },
-  defaultSort: 'title',
-  versions: true,
+
   access: {
     create: isSuperAdmin,
     read: () => true,
@@ -38,16 +40,9 @@ const Pages: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
-      admin: {
-        position: 'sidebar',
-      },
     },
-    slug('title'),
-    {
-      name: 'layout',
-      type: 'blocks',
-      blocks: [HeroBlock, TextBlock],
-    },
+    slugField('title'),
+    layoutField,
   ],
 }
 

@@ -1,7 +1,7 @@
 import type { Block } from 'payload'
-import Button from '~/blocks/ui/Button'
+import { Button } from './ui/Button'
 
-const HeroBlock: Block = {
+export const HeroBlock: Block = {
   slug: 'hero',
   interfaceName: 'HeroBlock',
   fields: [
@@ -145,5 +145,3 @@ const HeroBlock: Block = {
     },
   ],
 }
-
-export default HeroBlock

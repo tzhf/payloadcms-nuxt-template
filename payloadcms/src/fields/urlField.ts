@@ -1,6 +1,6 @@
 import type { TextField, Validate } from 'payload'
 
-const url: TextField = {
+export const urlField: TextField = {
   name: 'url',
   label: 'URL',
   type: 'text',
@@ -22,4 +22,3 @@ const url: TextField = {
     }
   }) as Validate,
 }
-export default url

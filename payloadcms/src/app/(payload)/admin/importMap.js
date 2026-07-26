@@ -1,4 +1,4 @@
-import { SlugField as SlugField_9e4a6d00d95a7209e9d23df607bf7e95 } from '@/fields/slug/SlugField'
+import { default as default_811ae7fbd7d6e2e72328a9af192b6749 } from '@/fields/slugField/field'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -27,8 +27,8 @@ import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c08
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { ColorCell as ColorCell_d94cdae6e85cf07b44c2b6d0fbc6664c } from '@/fields/color-picker'
-import { default as default_d94cdae6e85cf07b44c2b6d0fbc6664c } from '@/fields/color-picker'
+import { ColorCell as ColorCell_9fc98fa4bba9308d3f42f9055218346a } from '@/fields/colorPickerField/field'
+import { default as default_9fc98fa4bba9308d3f42f9055218346a } from '@/fields/colorPickerField/field'
 import { default as default_393043575375d1522d267fee98b552b4 } from '~/graphics/Icon.tsx'
 import { default as default_3c8837731a9ed9b728168df223debe86 } from '~/graphics/Logo.tsx'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
@@ -36,7 +36,7 @@ import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } f
 
 /** @type import('payload').ImportMap */
 export const importMap = {
-  "@/fields/slug/SlugField#SlugField": SlugField_9e4a6d00d95a7209e9d23df607bf7e95,
+  "@/fields/slugField/field#default": default_811ae7fbd7d6e2e72328a9af192b6749,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -65,8 +65,8 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@/fields/color-picker#ColorCell": ColorCell_d94cdae6e85cf07b44c2b6d0fbc6664c,
-  "@/fields/color-picker#default": default_d94cdae6e85cf07b44c2b6d0fbc6664c,
+  "@/fields/colorPickerField/field#ColorCell": ColorCell_9fc98fa4bba9308d3f42f9055218346a,
+  "@/fields/colorPickerField/field#default": default_9fc98fa4bba9308d3f42f9055218346a,
   "~/graphics/Icon.tsx#default": default_393043575375d1522d267fee98b552b4,
   "~/graphics/Logo.tsx#default": default_3c8837731a9ed9b728168df223debe86,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,

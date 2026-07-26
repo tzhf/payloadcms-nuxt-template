@@ -4,7 +4,7 @@ import { TextField, useField, useFormFields } from '@payloadcms/ui'
 import slugify from 'slugify'
 import { useEffect, useRef } from 'react'
 
-export function SlugField({ path, field }: any) {
+const SlugField = ({ path, field }: any) => {
   const { value, setValue } = useField<string>({ path })
 
   const lastAutoSlug = useRef<string | null>(null)
@@ -44,3 +44,5 @@ export function SlugField({ path, field }: any) {
     </div>
   )
 }
+
+export default SlugField

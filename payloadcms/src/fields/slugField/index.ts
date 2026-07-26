@@ -1,7 +1,7 @@
 import slugify from 'slugify'
 import type { TextField } from 'payload'
 
-const slugField = (field: string): TextField => ({
+export const slugField = (field: string): TextField => ({
   name: 'slug',
   type: 'text',
   unique: true,
@@ -11,7 +11,7 @@ const slugField = (field: string): TextField => ({
     description:
       'URL path for this page, e.g. "about" or "blog/my-post". Use "home" for the homepage.',
     components: {
-      Field: '@/fields/slug/SlugField#SlugField',
+      Field: '@/fields/slugField/field',
     },
   },
   hooks: {
@@ -29,5 +29,3 @@ const slugField = (field: string): TextField => ({
     ],
   },
 })
-
-export default slugField

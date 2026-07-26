@@ -1,10 +1,10 @@
 import type { Field } from 'payload'
 
-export const link: Field[] = [
+export const linkField: Field[] = [
   {
     name: 'label',
     type: 'text',
-    // required: true,
+    required: true,
     admin: {
       description:
         'Text displayed on the link. If blank for pages, page title can be used as fallback on the frontend.',
@@ -60,5 +60,3 @@ export const link: Field[] = [
     },
   },
 ]
-
-export default link

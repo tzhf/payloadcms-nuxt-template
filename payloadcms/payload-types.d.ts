@@ -304,7 +304,7 @@ export interface Page {
    * URL path for this page, e.g. "about" or "blog/my-post". Use "home" for the homepage.
    */
   slug: string;
-  layout?: (HeroBlock | TextBlock)[] | null;
+  layout?: (GridBlock | HeroBlock | TextBlock)[] | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -315,6 +315,47 @@ export interface Page {
   };
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GridBlock".
+ */
+export interface GridBlock {
+  columns?: ('cols1' | 'cols2' | 'cols3' | 'cols4') | null;
+  gap?: ('sm' | 'md' | 'lg') | null;
+  items?:
+    | {
+        blocks?: TextBlock[] | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'grid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextBlock".
+ */
+export interface TextBlock {
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'text';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -351,31 +392,6 @@ export interface Button {
   id?: string | null;
   blockName?: string | null;
   blockType: 'button';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TextBlock".
- */
-export interface TextBlock {
-  anchorId?: string | null;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'text';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -793,6 +809,7 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        grid?: T | GridBlockSelect<T>;
         hero?: T | HeroBlockSelect<T>;
         text?: T | TextBlockSelect<T>;
       };
@@ -805,6 +822,35 @@ export interface PagesSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GridBlock_select".
+ */
+export interface GridBlockSelect<T extends boolean = true> {
+  columns?: T;
+  gap?: T;
+  items?:
+    | T
+    | {
+        blocks?:
+          | T
+          | {
+              text?: T | TextBlockSelect<T>;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextBlock_select".
+ */
+export interface TextBlockSelect<T extends boolean = true> {
+  content?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -841,16 +887,6 @@ export interface ButtonSelect<T extends boolean = true> {
   variant?: T;
   size?: T;
   openInNewTab?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TextBlock_select".
- */
-export interface TextBlockSelect<T extends boolean = true> {
-  anchorId?: T;
-  content?: T;
   id?: T;
   blockName?: T;
 }
@@ -1059,7 +1095,7 @@ export interface SiteSettings {
           /**
            * Text displayed on the link. If blank for pages, page title can be used as fallback on the frontend.
            */
-          label?: string | null;
+          label: string;
           type?: ('page' | 'custom') | null;
           page?: (string | null) | Page;
           /**
@@ -1079,7 +1115,7 @@ export interface SiteSettings {
           /**
            * Text displayed on the link. If blank for pages, page title can be used as fallback on the frontend.
            */
-          label?: string | null;
+          label: string;
           type?: ('page' | 'custom') | null;
           page?: (string | null) | Page;
           /**
