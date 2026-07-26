@@ -1,9 +1,10 @@
-<!-- ~/components/payload/RenderBlock.vue -->
 <script setup lang="ts">
 import { blocks } from './blocks'
+import type { Page } from '#payload-types'
+export type PageBlock = NonNullable<Page['layout']>[number]
 
 const props = defineProps<{
-  block: any
+  block: PageBlock
 }>()
 
 const component = computed(() => {
@@ -12,6 +13,6 @@ const component = computed(() => {
 </script>
 
 <template>
-  <component v-if="component" :is="component" :block="block" />
+  <component v-if="component" :is="component" :block="block as any" />
   <div v-else class="text-red-500">Unknown block: {{ block.blockType }}</div>
 </template>

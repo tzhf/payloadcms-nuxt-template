@@ -1,4 +1,23 @@
 import gql from 'graphql-tag';
+export const TextBlockFragmentDoc = gql`
+    fragment TextBlock on TextBlock {
+  blockType
+  anchorId
+  content
+}
+    `;
+export const GridBlockFragmentDoc = gql`
+    fragment GridBlock on GridBlock {
+  blockType
+  columns
+  gap
+  items {
+    blocks {
+      ...TextBlock
+    }
+  }
+}
+    ${TextBlockFragmentDoc}`;
 export const MediaFragmentDoc = gql`
     fragment Media on Media {
   id
@@ -73,43 +92,6 @@ export const HeroBlockFragmentDoc = gql`
 }
     ${MediaFragmentDoc}
 ${ButtonFragmentDoc}`;
-export const TextBlockFragmentDoc = gql`
-    fragment TextBlock on TextBlock {
-  blockType
-  anchorId
-  content
-}
-    `;
-export const SeoImageFragmentDoc = gql`
-    fragment SeoImage on SeoImage {
-  id
-  alt
-  url
-  width
-  height
-  sizes {
-    opengraph {
-      url
-      width
-      height
-    }
-  }
-}
-    `;
-export const PageFragmentDoc = gql`
-    fragment Page on Page {
-  id
-  title
-  slug
-  meta {
-    title
-    description
-    image {
-      ...SeoImage
-    }
-  }
-}
-    ${SeoImageFragmentDoc}`;
 export const ImageFragmentDoc = gql`
     fragment Image on Image {
   id
@@ -154,6 +136,22 @@ export const SvgFragmentDoc = gql`
   url
   width
   height
+}
+    `;
+export const SeoImageFragmentDoc = gql`
+    fragment SeoImage on SeoImage {
+  id
+  alt
+  url
+  width
+  height
+  sizes {
+    opengraph {
+      url
+      width
+      height
+    }
+  }
 }
     `;
 export const VideoThumbnailFragmentDoc = gql`
@@ -253,14 +251,25 @@ export const GetPageDocument = gql`
     query GetPage($slug: String!) {
   Pages(limit: 1, where: {slug: {equals: $slug}}) {
     docs {
-      ...Page
+      id
+      title
+      slug
+      meta {
+        title
+        description
+        image {
+          ...SeoImage
+        }
+      }
       layout {
+        ...GridBlock
         ...HeroBlock
         ...TextBlock
       }
     }
   }
 }
-    ${PageFragmentDoc}
+    ${SeoImageFragmentDoc}
+${GridBlockFragmentDoc}
 ${HeroBlockFragmentDoc}
 ${TextBlockFragmentDoc}`;

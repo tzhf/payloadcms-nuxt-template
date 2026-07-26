@@ -1,7 +1,9 @@
-import PayloadHeroBlock from './HeroBlock.vue'
-import PayloadTextBlock from './TextBlock.vue'
+import GridBlock from './GridBlock.vue'
+import HeroBlock from './HeroBlock.vue'
+import TextBlock from './TextBlock.vue'
 
 export const blocks = {
-  hero: PayloadHeroBlock,
-  text: PayloadTextBlock,
+  grid: GridBlock,
+  hero: HeroBlock,
+  text: TextBlock,
 } as const

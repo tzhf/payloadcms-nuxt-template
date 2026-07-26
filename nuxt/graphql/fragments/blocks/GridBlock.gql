@@ -1,0 +1,10 @@
+fragment GridBlock on GridBlock {
+  blockType
+  columns
+  gap
+  items {
+    blocks {
+      ...TextBlock
+    }
+  }
+}

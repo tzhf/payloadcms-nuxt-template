@@ -1,5 +1,4 @@
 fragment TextBlock on TextBlock {
   blockType
-  anchorId
   content
 }
