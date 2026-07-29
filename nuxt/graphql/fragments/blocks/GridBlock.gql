@@ -1,9 +1,9 @@
 fragment GridBlock on GridBlock {
   blockType
-  columns
+  col_num
   gap
-  items {
-    blocks {
+  columns {
+    items {
       ...TextBlock
     }
   }

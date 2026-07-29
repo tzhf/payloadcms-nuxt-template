@@ -1,8 +1,8 @@
 <template>
   <div :class="['grid w-full', gridColsClass, gapClass]">
-    <div v-for="(col, i) in block.items" :key="i" class="flex flex-col">
+    <div v-for="(col, i) in block.columns" :key="i" class="flex flex-col">
       <PayloadRenderBlock
-        v-for="(childBlock, i) in col.blocks"
+        v-for="(childBlock, i) in col.items"
         :key="childBlock.id ?? `${childBlock.blockType}-${i}`"
         :block="childBlock"
       />
@@ -19,9 +19,9 @@ const props = defineProps<{
 }>()
 
 // Dynamic CSS Grid class based on Payload field selection
-console.log('🚀 ~ props.block.columns:', props.block.columns)
+
 const gridColsClass = computed(() => {
-  switch (props.block.columns) {
+  switch (props.block.col_num) {
     case 'cols1':
       return 'grid-cols-1'
     case 'cols2':

@@ -1,0 +1,10 @@
+fragment SectionBlock on SectionBlock {
+  blockType
+  anchorId
+  paddingY
+  width
+  blocks {
+    ...TextBlock 
+    ...GridBlock 
+    }
+}

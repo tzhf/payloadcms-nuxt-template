@@ -1,11 +1,18 @@
-import { livePreviewBreakpoints } from '~/utils'
-import { isSuperAdmin } from '~/access'
+import { livePreviewBreakpoints } from '@/utils'
+import { isSuperAdmin } from '@/access'
 
 import type { CollectionConfig } from 'payload'
-import { slugField, layoutField } from '~/fields'
+import { slugField } from '@/fields/slug'
+import { layoutField } from '@/fields/layout'
 
 const Pages: CollectionConfig = {
   slug: 'pages',
+
+  // Define which fields to select when populating this document from relationships
+  defaultPopulate: {
+    title: true,
+    slug: true,
+  },
 
   labels: {
     singular: '📄 Page',

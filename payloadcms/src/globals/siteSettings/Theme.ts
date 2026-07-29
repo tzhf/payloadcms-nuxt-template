@@ -1,6 +1,6 @@
 import type { Tab } from 'payload'
 
-import { colorField } from '~/fields'
+import { colorPickerField } from '@/fields/colorPicker'
 
 export const Theme: Tab = {
   label: 'Theme',
@@ -41,47 +41,47 @@ export const Theme: Tab = {
       name: 'colors',
       type: 'group',
       fields: [
-        colorField({
+        colorPickerField({
           name: 'background',
           overrides: (f) => ({ ...f, defaultValue: '#ffffff' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'foreground',
           overrides: (f) => ({ ...f, defaultValue: '#111111' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'primary',
           overrides: (f) => ({ ...f, defaultValue: '#000000' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'primaryForeground',
           overrides: (f) => ({ ...f, defaultValue: '#ffffff' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'secondary',
           overrides: (f) => ({ ...f, defaultValue: '#f4f4f5' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'secondaryForeground',
           overrides: (f) => ({ ...f, defaultValue: '#111111' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'muted',
           overrides: (f) => ({ ...f, defaultValue: '#f4f4f5' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'mutedForeground',
           overrides: (f) => ({ ...f, defaultValue: '#71717a' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'border',
           overrides: (f) => ({ ...f, defaultValue: '#e4e4e7' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'accent',
           overrides: (f) => ({ ...f, defaultValue: '#f4f4f5' }),
         }),
-        colorField({
+        colorPickerField({
           name: 'accentForeground',
           overrides: (f) => ({ ...f, defaultValue: '#111111' }),
         }),

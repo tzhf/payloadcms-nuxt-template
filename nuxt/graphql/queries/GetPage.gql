@@ -12,6 +12,7 @@ query GetPage($slug: String!) {
         }
       }
       layout {
+        ...SectionBlock
         ...GridBlock
         ...HeroBlock
         ...TextBlock

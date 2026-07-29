@@ -1,6 +1,5 @@
 // collections/Media.ts
-import { hashFilename } from '~/hooks'
-import normaliseSvg from './SVGs/hooks/normaliseSvg'
+import { hashFilename } from '@/hooks'
 
 import type { CollectionConfig, ImageSize } from 'payload'
 

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { Button } from '#payload-types'
-export type ButtonProps = Omit<Button, 'id' | 'blockName' | 'blockType'>
+// export type ButtonProps = Omit<Button, 'id' | 'blockName' | 'blockType'>
 
 const props = defineProps<{
-  button?: Partial<ButtonProps>
-  tag?: 'button' | 'a' | 'NuxtLink'
+  button: Button
+  // button?: Partial<ButtonProps>
+  // tag?: 'button' | 'a' | 'NuxtLink'
 }>()
 
 // const emit = defineEmits(['click'])
@@ -46,21 +47,20 @@ const classes = computed(() => {
   return `${base} ${size} ${style}`
 })
 
-const component = computed(() => {
-  if (props.tag) return props.tag
-  if (props.button?.url) return resolveComponent('NuxtLink')
-  return 'button'
-})
+// const component = computed(() => {
+//   if (props.tag) return props.tag
+//   if (props.button?.url) return resolveComponent('NuxtLink')
+//   return 'button'
+// })
 </script>
 
 <template>
-  <component
-    :is="component"
+  <NuxtLink
     :to="button?.url"
     :target="button?.openInNewTab ? '_blank' : undefined"
     :rel="button?.openInNewTab ? 'noopener noreferrer' : undefined"
     :class="classes"
   >
     <slot>{{ button?.label }}</slot>
-  </component>
+  </NuxtLink>
 </template>

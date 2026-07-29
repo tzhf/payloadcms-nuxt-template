@@ -1,7 +1,9 @@
 import type { Tab } from 'payload'
 
-import { colorField, linkField } from '~/fields'
-import { Button } from '~/blocks/ui/Button'
+import { linkField } from '@/fields/link'
+import { colorPickerField } from '@/fields/colorPicker'
+
+import { Button } from '@/blocks/ui/Button'
 
 export const Navbar: Tab = {
   label: 'Navbar',
@@ -10,21 +12,21 @@ export const Navbar: Tab = {
       name: 'navbar',
       type: 'group',
       fields: [
-        colorField({
+        colorPickerField({
           name: 'textColor',
           overrides: (field) => ({
             ...field,
             defaultValue: '#ffffff',
           }),
         }),
-        colorField({
+        colorPickerField({
           name: 'backgroundColor',
           overrides: (field) => ({
             ...field,
             defaultValue: '#000000',
           }),
         }),
-        colorField({
+        colorPickerField({
           name: 'backgroundColorScroll',
           overrides: (field) => ({
             ...field,

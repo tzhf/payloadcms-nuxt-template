@@ -1,9 +1,12 @@
 import type { Block } from 'payload'
+
 import { Button } from './ui/Button'
+import { richTextField } from '@/fields/richText'
 
 export const HeroBlock: Block = {
   slug: 'hero',
   interfaceName: 'HeroBlock',
+
   fields: [
     {
       type: 'tabs',
@@ -11,10 +14,6 @@ export const HeroBlock: Block = {
         {
           label: 'Content',
           fields: [
-            {
-              name: 'anchorId',
-              type: 'text',
-            },
             {
               name: 'title',
               type: 'text',
@@ -30,6 +29,12 @@ export const HeroBlock: Block = {
               type: 'blocks',
               blocks: [Button],
             },
+            // {
+            //   name: 'content',
+            //   type: 'richText',
+            //   editor: lexicalEditor({}),
+            // },
+            richTextField,
           ],
         },
         {
@@ -134,9 +139,9 @@ export const HeroBlock: Block = {
               type: 'select',
               defaultValue: 'auto',
               options: [
-                { label: 'Auto (Padding based)', value: 'auto' },
-                { label: '70vh (Sub-Hero)', value: '70vh' },
-                { label: '100vh (Full Screen Viewport)', value: '100vh' },
+                { label: 'Auto ', value: 'auto' },
+                { label: 'Sub-Hero', value: 'sub' },
+                { label: 'Full Screen', value: 'full' },
               ],
             },
           ],

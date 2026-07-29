@@ -1,23 +1,4 @@
 import gql from 'graphql-tag';
-export const TextBlockFragmentDoc = gql`
-    fragment TextBlock on TextBlock {
-  blockType
-  anchorId
-  content
-}
-    `;
-export const GridBlockFragmentDoc = gql`
-    fragment GridBlock on GridBlock {
-  blockType
-  columns
-  gap
-  items {
-    blocks {
-      ...TextBlock
-    }
-  }
-}
-    ${TextBlockFragmentDoc}`;
 export const MediaFragmentDoc = gql`
     fragment Media on Media {
   id
@@ -61,7 +42,6 @@ export const MediaFragmentDoc = gql`
     `;
 export const ButtonFragmentDoc = gql`
     fragment Button on Button {
-  blockType
   label
   url
   color
@@ -73,9 +53,9 @@ export const ButtonFragmentDoc = gql`
 export const HeroBlockFragmentDoc = gql`
     fragment HeroBlock on HeroBlock {
   blockType
-  anchorId
   title
   subtitle
+  content
   image {
     ...Media
   }
@@ -92,6 +72,37 @@ export const HeroBlockFragmentDoc = gql`
 }
     ${MediaFragmentDoc}
 ${ButtonFragmentDoc}`;
+export const TextBlockFragmentDoc = gql`
+    fragment TextBlock on TextBlock {
+  blockType
+  content
+}
+    `;
+export const GridBlockFragmentDoc = gql`
+    fragment GridBlock on GridBlock {
+  blockType
+  col_num
+  gap
+  columns {
+    items {
+      ...TextBlock
+    }
+  }
+}
+    ${TextBlockFragmentDoc}`;
+export const SectionBlockFragmentDoc = gql`
+    fragment SectionBlock on SectionBlock {
+  blockType
+  anchorId
+  paddingY
+  width
+  blocks {
+    ...TextBlock
+    ...GridBlock
+  }
+}
+    ${TextBlockFragmentDoc}
+${GridBlockFragmentDoc}`;
 export const ImageFragmentDoc = gql`
     fragment Image on Image {
   id
@@ -262,6 +273,7 @@ export const GetPageDocument = gql`
         }
       }
       layout {
+        ...SectionBlock
         ...GridBlock
         ...HeroBlock
         ...TextBlock
@@ -270,6 +282,7 @@ export const GetPageDocument = gql`
   }
 }
     ${SeoImageFragmentDoc}
+${SectionBlockFragmentDoc}
 ${GridBlockFragmentDoc}
 ${HeroBlockFragmentDoc}
 ${TextBlockFragmentDoc}`;

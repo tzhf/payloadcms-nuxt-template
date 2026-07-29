@@ -11,7 +11,7 @@ export const slugField = (field: string): TextField => ({
     description:
       'URL path for this page, e.g. "about" or "blog/my-post". Use "home" for the homepage.',
     components: {
-      Field: '@/fields/slugField/field',
+      Field: '@/fields/slug/field',
     },
   },
   hooks: {

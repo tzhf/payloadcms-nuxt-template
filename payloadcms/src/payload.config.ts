@@ -11,7 +11,7 @@ import { s3Storage } from '@payloadcms/storage-s3'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 
 import * as collections from './collections'
-import * as globals from './globals'
+import { SiteSettings } from '@/globals/siteSettings'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -50,7 +50,7 @@ export default buildConfig({
   }),
   editor: lexicalEditor({}),
   collections: Object.values(collections),
-  globals: Object.values(globals),
+  globals: [SiteSettings],
   routes: {
     api: process.env.PAYLOAD_API_ROUTE,
   },

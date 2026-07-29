@@ -1,4 +1,4 @@
-import { hashFilename } from '~/hooks'
+import { hashFilename } from '@/hooks'
 
 import type { CollectionConfig } from 'payload'
 

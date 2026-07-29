@@ -304,7 +304,7 @@ export interface Page {
    * URL path for this page, e.g. "about" or "blog/my-post". Use "home" for the homepage.
    */
   slug: string;
-  layout?: (GridBlock | HeroBlock | TextBlock)[] | null;
+  layout?: (SectionBlock | GridBlock | HeroBlock | TextBlock)[] | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -318,14 +318,30 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionBlock".
+ */
+export interface SectionBlock {
+  /**
+   * Used for smooth scrolling / hash links (#about-us)
+   */
+  anchorId?: string | null;
+  paddingY?: ('none' | 'sm' | 'md' | 'lg') | null;
+  width?: ('narrow' | 'standard' | 'full') | null;
+  blocks?: (GridBlock | TextBlock)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'section';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "GridBlock".
  */
 export interface GridBlock {
-  columns?: ('cols1' | 'cols2' | 'cols3' | 'cols4') | null;
+  col_num?: ('cols1' | 'cols2' | 'cols3' | 'cols4') | null;
   gap?: ('sm' | 'md' | 'lg') | null;
-  items?:
+  columns?:
     | {
-        blocks?: TextBlock[] | null;
+        items?: TextBlock[] | null;
         id?: string | null;
       }[]
     | null;
@@ -362,10 +378,24 @@ export interface TextBlock {
  * via the `definition` "HeroBlock".
  */
 export interface HeroBlock {
-  anchorId?: string | null;
   title: string;
   subtitle?: string | null;
   buttons?: Button[] | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   image?: (string | null) | Media;
   layout?: ('split' | 'overlay' | 'stacked') | null;
   splitRatio?: ('30-70' | '40-60' | '50-50' | '60-40' | '70-30') | null;
@@ -373,7 +403,7 @@ export interface HeroBlock {
   mediaOrder?: ('below' | 'above') | null;
   overlayOpacity?: ('20' | '40' | '60' | '80' | 'gradient-bottom') | null;
   textAlignment?: ('left' | 'center' | 'right') | null;
-  minHeight?: ('auto' | '70vh' | '100vh') | null;
+  minHeight?: ('auto' | 'sub' | 'full') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';
@@ -809,6 +839,7 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        section?: T | SectionBlockSelect<T>;
         grid?: T | GridBlockSelect<T>;
         hero?: T | HeroBlockSelect<T>;
         text?: T | TextBlockSelect<T>;
@@ -825,15 +856,32 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionBlock_select".
+ */
+export interface SectionBlockSelect<T extends boolean = true> {
+  anchorId?: T;
+  paddingY?: T;
+  width?: T;
+  blocks?:
+    | T
+    | {
+        grid?: T | GridBlockSelect<T>;
+        text?: T | TextBlockSelect<T>;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "GridBlock_select".
  */
 export interface GridBlockSelect<T extends boolean = true> {
-  columns?: T;
+  col_num?: T;
   gap?: T;
-  items?:
+  columns?:
     | T
     | {
-        blocks?:
+        items?:
           | T
           | {
               text?: T | TextBlockSelect<T>;
@@ -857,7 +905,6 @@ export interface TextBlockSelect<T extends boolean = true> {
  * via the `definition` "HeroBlock_select".
  */
 export interface HeroBlockSelect<T extends boolean = true> {
-  anchorId?: T;
   title?: T;
   subtitle?: T;
   buttons?:
@@ -865,6 +912,7 @@ export interface HeroBlockSelect<T extends boolean = true> {
     | {
         button?: T | ButtonSelect<T>;
       };
+  content?: T;
   image?: T;
   layout?: T;
   splitRatio?: T;

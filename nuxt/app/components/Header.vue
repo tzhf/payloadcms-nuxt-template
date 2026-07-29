@@ -22,7 +22,7 @@ function toggle() {
 
 <template>
   <header
-    class="w-fsull itesms-center jusstify-between z-50 flex h-16 border-b transition-colors duration-500"
+    class="z-50 flex h-16 border-b transition-colors duration-500"
     :class="[headerScrollClass]"
   >
     <NuxtLink

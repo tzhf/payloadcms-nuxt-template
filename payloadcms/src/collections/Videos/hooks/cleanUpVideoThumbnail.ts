@@ -1,4 +1,4 @@
-import { getRelationshipId } from '~/utils'
+import { getRelationshipId } from '@/utils'
 import { CollectionAfterChangeHook } from 'payload'
 import { Video } from 'payload-types'
 

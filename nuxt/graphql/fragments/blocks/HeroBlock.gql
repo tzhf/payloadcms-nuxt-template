@@ -1,8 +1,8 @@
 fragment HeroBlock on HeroBlock {
   blockType
-  anchorId
   title
   subtitle
+  content
   image {
     ...Media
   }

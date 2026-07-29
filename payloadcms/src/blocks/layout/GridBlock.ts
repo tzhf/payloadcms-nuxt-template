@@ -6,16 +6,13 @@ const allowedChildBlocks = [TextBlock]
 export const GridBlock: Block = {
   slug: 'grid',
   interfaceName: 'GridBlock',
-  labels: {
-    singular: 'Grid Layout',
-    plural: 'Grid Layouts',
-  },
+
   fields: [
     {
       type: 'row',
       fields: [
         {
-          name: 'columns',
+          name: 'col_num',
           type: 'select',
           defaultValue: 'cols4',
           options: [
@@ -40,14 +37,14 @@ export const GridBlock: Block = {
       ],
     },
     {
-      name: 'items',
+      name: 'columns',
       type: 'array',
-      label: 'Columns',
+      // label: 'Columns',
       minRows: 1,
       fields: [
         {
-          name: 'blocks',
-          label: 'Items',
+          name: 'items',
+          // label: 'Items',
           type: 'blocks',
           blocks: allowedChildBlocks,
         },

@@ -10,12 +10,12 @@ const layout = computed(() => props.block.layout || 'split')
 // 1. Min Height Styles
 const minHeightClass = computed(() => {
   switch (props.block.minHeight) {
-    case '100vh':
-      return 'min-h-screen flex flex-col'
-    case '70vh':
-      return 'min-h-[70vh] flex flex-col'
+    case 'full':
+      return 'min-h-[calc(100vh-4rem)]'
+    case 'sub':
+      return 'min-h-[50vh]'
     default:
-      return 'min-h-[30vh] flex flex-col'
+      return ''
   }
 })
 
@@ -70,9 +70,8 @@ const overlayClass = computed(() => {
 </script>
 
 <template>
-  <section
-    :id="block.anchorId ?? undefined"
-    class="relative overflow-hidden bg-yellow-100"
+  <div
+    class="fslex fslex-col justifys-center ovesrflow-hidden relative bg-yellow-100"
     :class="[
       minHeightClass,
       layout === 'overlay' ? 'text-white' : 'text-neutral-900',
@@ -82,23 +81,27 @@ const overlayClass = computed(() => {
     <!-- PRESET 1: OVERLAY LAYOUT                   -->
     <!-- ========================================== -->
     <template v-if="layout === 'overlay'">
-      <div class="relative z-20 container mx-auto px-6">
-        <div class="flex max-w-3xl flex-col" :class="textAlignmentClass">
+      <div class="relative z-20">
+        <div
+          class="flex max-w-3xl flex-col justify-center px-6 py-12 lg:px-12 xl:px-16"
+          :class="textAlignmentClass"
+        >
           <h1
             v-if="block.title"
-            class="mb-6 text-4xl leading-tight font-extrabold md:text-6xl lg:text-7xl"
+            class="mb-2 text-4xl leading-tight font-extrabold sm:text-6xl lg:text-7xl"
           >
             {{ block.title }}
           </h1>
-          <p
-            v-if="block.subtitle"
-            class="mb-8 max-w-2xl text-lg text-white/90 md:text-xl"
-          >
+          <p v-if="block.subtitle" class="mb-8 max-w-2xl text-lg md:text-xl">
             {{ block.subtitle }}
           </p>
+          <PayloadBlocksTextBlock
+            v-if="block.content"
+            :content="block.content"
+          />
           <div
             v-if="block.buttons?.length"
-            class="flex flex-col gap-4 sm:flex-row"
+            class="flex flex-col gap-4 pt-8 sm:flex-row"
           >
             <Button
               v-for="button in block.buttons"
@@ -129,7 +132,6 @@ const overlayClass = computed(() => {
     <!-- ========================================== -->
 
     <template v-else-if="layout === 'split'">
-      <!-- flex-1 w-full forces grid to span the section's full min-height -->
       <div
         class="grid w-full flex-1 grid-cols-1 items-stretch gap-0 lg:gap-0"
         :class="splitGridClass"
@@ -139,15 +141,23 @@ const overlayClass = computed(() => {
           class="flex flex-col justify-center px-6 py-12 lg:px-12 xl:px-16"
           :class="[textAlignmentClass]"
         >
-          <h1 v-if="block.title" class="mb-2 text-4xl md:text-5xl lg:text-6xl">
+          <h1
+            v-if="block.title"
+            class="mb-2 text-4xl leading-tight font-extrabold sm:text-6xl lg:text-7xl"
+          >
             {{ block.title }}
           </h1>
-          <p v-if="block.subtitle" class="mb-8">
+          <p v-if="block.subtitle" class="mb-8 max-w-2xl text-lg md:text-xl">
             {{ block.subtitle }}
           </p>
+          <PayloadBlocksTextBlock
+            v-if="block.content"
+            :content="block.content"
+          />
+
           <div
             v-if="block.buttons?.length"
-            class="flex w-full flex-col gap-4 sm:flex-row"
+            class="flex flex-col gap-4 pt-8 sm:flex-row"
           >
             <Button
               v-for="button in block.buttons"
@@ -176,54 +186,54 @@ const overlayClass = computed(() => {
     <!-- PRESET 3: STACKED LAYOUT (CENTERED/APP)    -->
     <!-- ========================================== -->
     <template v-else-if="layout === 'stacked'">
-      <div class="container mx-auto px-6">
-        <div class="flex flex-col items-center gap-12 text-center">
-          <!-- Text Content -->
-          <div
-            class="flex max-w-4xl flex-col"
-            :class="[
-              textAlignmentClass,
-              block.mediaOrder === 'above' ? 'order-2' : 'order-1',
-            ]"
+      <div class="flex flex-col">
+        <!-- Text Content -->
+        <div
+          class="max-w-7xl px-6 py-12"
+          :class="[
+            textAlignmentClass,
+            block.mediaOrder === 'above' ? 'order-2' : 'order-1',
+          ]"
+        >
+          <h1
+            v-if="block.title"
+            class="text-4xl leading-tight font-extrabold sm:text-6xl lg:text-7xl"
           >
-            <h1
-              v-if="block.title"
-              class="mb-6 text-4xl leading-tight font-extrabold md:text-6xl lg:text-7xl"
-            >
-              {{ block.title }}
-            </h1>
-            <p
-              v-if="block.subtitle"
-              class="mx-auto mb-8 max-w-2xl text-lg text-neutral-600 md:text-xl dark:text-neutral-300"
-            >
-              {{ block.subtitle }}
-            </p>
-            <div
-              v-if="block.buttons?.length"
-              class="flex w-full flex-col justify-center gap-4 sm:flex-row"
-            >
-              <Button
-                v-for="button in block.buttons"
-                :key="button.label"
-                :button="button"
-              />
-            </div>
-          </div>
+            {{ block.title }}
+          </h1>
+          <p v-if="block.subtitle" class="mb-8 max-w-2xl text-lg md:text-xl">
+            {{ block.subtitle }}
+          </p>
+          <PayloadBlocksTextBlock
+            v-if="block.content"
+            :content="block.content"
+          />
 
-          <!-- Wide Centered Media -->
           <div
-            v-if="block.image"
-            class="w-full max-w-5xl"
-            :class="[block.mediaOrder === 'above' ? 'order-1' : 'order-2']"
+            v-if="block.buttons?.length"
+            class="flex flex-col gap-4 pt-8 sm:flex-row"
           >
-            <PayloadImage
-              :image="block.image"
-              class="h-auto max-h-162.5 w-full object-cover"
-              priority
+            <Button
+              v-for="button in block.buttons"
+              :key="button.label"
+              :button="button"
             />
           </div>
         </div>
+
+        <!-- Wide Centered Media -->
+        <div
+          v-if="block.image"
+          class="w-full"
+          :class="[block.mediaOrder === 'above' ? 'order-1' : 'order-2']"
+        >
+          <PayloadImage
+            :image="block.image"
+            class="h-auto max-h-162.5 w-full object-cover"
+            priority
+          />
+        </div>
       </div>
     </template>
-  </section>
+  </div>
 </template>

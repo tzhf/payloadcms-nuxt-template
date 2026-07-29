@@ -64,14 +64,13 @@
 </template>
 
 <script setup lang="ts">
-import { h, computed, type VNode } from 'vue'
 import type {
+  SerializedRootNode,
   SerializedLexicalNode,
   SerializedElementNode,
   SerializedTextNode,
 } from '#lexical'
 import type { Image, Page } from '#payload-types'
-import type { LexicalRichTextField } from './types'
 import type { SrcsetSizes } from '~/components/payload/image/types'
 
 // Lexical Bitwise Format Flags
@@ -83,6 +82,10 @@ const IS_CODE = 1 << 4 // 16
 const IS_SUBSCRIPT = 1 << 5 // 32
 const IS_SUPERSCRIPT = 1 << 6 // 64
 
+interface LexicalRichTextField {
+  root: SerializedRootNode
+}
+
 interface LexicalTextNode extends SerializedTextNode {
   type: 'text'
 }
@@ -93,13 +96,13 @@ interface LexicalLinebreakNode {
 
 interface LexicalParagraphNode extends SerializedElementNode<SerializedLexicalNode> {
   type: 'paragraph'
-  format?: 'left' | 'center' | 'right' | 'justify' | ''
+  format: 'left' | 'center' | 'right' | 'justify' | ''
 }
 
 interface LexicalHeadingNode extends SerializedElementNode<SerializedLexicalNode> {
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   type: 'heading'
-  format?: 'left' | 'center' | 'right' | 'justify' | ''
+  format: 'left' | 'center' | 'right' | 'justify' | ''
 }
 
 interface LexicalListItemNode extends SerializedElementNode<SerializedLexicalNode> {
@@ -110,12 +113,12 @@ interface LexicalListNode extends SerializedElementNode<LexicalListItemNode> {
   tag: 'ol' | 'ul'
   type: 'list'
   listType?: 'number' | 'bullet'
-  format?: 'left' | 'center' | 'right' | 'justify' | ''
+  format: 'left' | 'center' | 'right' | 'justify' | ''
 }
 
 interface LexicalBlockquoteNode extends SerializedElementNode<SerializedLexicalNode> {
   type: 'quote'
-  format?: 'left' | 'center' | 'right' | 'justify' | ''
+  format: 'left' | 'center' | 'right' | 'justify' | ''
 }
 
 interface LexicalCodeBlockNode extends SerializedElementNode<SerializedLexicalNode> {
