@@ -1,7 +1,5 @@
-// collections/Media.ts
-import { hashFilename } from '@/hooks'
-
 import type { CollectionConfig, ImageSize } from 'payload'
+import { hashFilename } from '@/hooks/hashFilename'
 
 const sizes = {
   xs: 320,

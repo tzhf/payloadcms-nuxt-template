@@ -1,7 +1,6 @@
-import { hashFilename } from '@/hooks'
-
 import type { CollectionConfig, ImageSize } from 'payload'
 import type { Image } from 'payload-types'
+import { hashFilename } from '@/hooks/hashFilename'
 
 const sizes = {
   xs: 320,

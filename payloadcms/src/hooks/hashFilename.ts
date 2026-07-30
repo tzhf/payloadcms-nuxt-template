@@ -2,7 +2,7 @@ import crypto from 'crypto'
 
 import type { CollectionBeforeOperationHook } from 'payload'
 
-const hashFilename: CollectionBeforeOperationHook = ({ args, req }) => {
+export const hashFilename: CollectionBeforeOperationHook = ({ args, req }) => {
   if (req.file && !args.where) {
     const filename = req.file.name ?? ''
     const extension = filename.split('.').at(-1) ?? ''
@@ -16,5 +16,3 @@ const hashFilename: CollectionBeforeOperationHook = ({ args, req }) => {
     req.file.name = [hash, extension].join('.')
   }
 }
-
-export default hashFilename

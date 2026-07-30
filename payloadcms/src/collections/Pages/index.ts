@@ -1,4 +1,4 @@
-import { livePreviewBreakpoints } from '@/utils'
+import { livePreviewBreakpoints } from '@/utils/livePreviewBreakpoints'
 import { isSuperAdmin } from '@/access'
 
 import type { CollectionConfig } from 'payload'

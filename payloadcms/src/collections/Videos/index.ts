@@ -1,4 +1,4 @@
-import { hashFilename } from '@/hooks'
+import { hashFilename } from '@/hooks/hashFilename'
 import {
   cleanUpVideoThumbnail,
   deleteVideoThumbnail,

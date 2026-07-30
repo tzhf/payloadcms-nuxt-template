@@ -1,11 +1,11 @@
 import type { GlobalConfig } from 'payload'
-import { livePreviewBreakpoints } from '@/utils'
+import { livePreviewBreakpoints } from '@/utils/livePreviewBreakpoints'
 
 import { Theme } from './Theme'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
 
-export const SiteSettings: GlobalConfig = {
+const SiteSettings: GlobalConfig = {
   admin: {
     group: '🌏 Globals',
     livePreview: {
@@ -36,4 +36,4 @@ export const SiteSettings: GlobalConfig = {
   ],
 }
 
-// export default SiteSettings
+export default SiteSettings

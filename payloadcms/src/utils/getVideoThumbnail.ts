@@ -10,7 +10,7 @@ type FileUpload = NonNullable<PayloadRequest['file']>
 
 ffmpeg.setFfmpegPath(ffmpegStatic || '')
 
-const getVideoThumbnail = async (file: FileUpload) => {
+export const getVideoThumbnail = async (file: FileUpload) => {
   return new Promise<FileUpload>(async (resolve, reject) => {
     const buffers: Buffer[] = []
     const passThrough = new PassThrough()
@@ -44,5 +44,3 @@ const getVideoThumbnail = async (file: FileUpload) => {
       .pipe(passThrough, { end: true })
   })
 }
-
-export default getVideoThumbnail

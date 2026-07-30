@@ -10,8 +10,29 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 
-import * as collections from './collections'
-import { SiteSettings } from '@/globals/siteSettings'
+import SiteSettings from '@/globals/SiteSettings'
+// import * as collections from './collections'
+
+import Pages from '@/collections/Pages'
+import SVGs from '@/collections/SVGs'
+import Staff from '@/collections/Staff'
+import SeoImages from '@/collections/SeoImages'
+import Media from '@/collections/Media'
+import Images from '@/collections/Images'
+import Videos from '@/collections/Videos'
+import VideoThumbnails from '@/collections/VideoThumbnails'
+
+const globals = [SiteSettings]
+const collections = [
+  Pages,
+  Images,
+  Media,
+  SVGs,
+  Videos,
+  VideoThumbnails,
+  SeoImages,
+  Staff,
+]
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -41,7 +62,7 @@ export default buildConfig({
       // favicon: '/favicon/safari-pinned-tab.svg',
       titleSuffix: `| ${process.env.SITE_NAME}`,
     },
-    user: collections.Staff.slug,
+    user: Staff.slug,
   },
   db: mongooseAdapter({
     url:
@@ -49,8 +70,8 @@ export default buildConfig({
       `mongodb://0.0.0.0/${process.env.DATABASE_NAME}`,
   }),
   editor: lexicalEditor({}),
-  collections: Object.values(collections),
-  globals: [SiteSettings],
+  collections: collections,
+  globals: globals,
   routes: {
     api: process.env.PAYLOAD_API_ROUTE,
   },

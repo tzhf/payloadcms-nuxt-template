@@ -1,6 +1,5 @@
-import { hashFilename } from '@/hooks'
-
 import type { CollectionConfig } from 'payload'
+import { hashFilename } from '@/hooks/hashFilename'
 
 const VideoThumbnails: CollectionConfig = {
   slug: 'video-thumbnails',

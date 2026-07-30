@@ -1,6 +1,6 @@
-import { getRelationshipId } from '@/utils'
 import { CollectionAfterDeleteHook } from 'payload'
 import { Video } from 'payload-types'
+import { getRelationshipId } from '@/utils/getRelationshipId'
 
 const deleteVideoThumbnail: CollectionAfterDeleteHook<Video> = async ({
   doc,
