@@ -10,29 +10,8 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 
-import SiteSettings from '@/globals/SiteSettings'
-// import * as collections from './collections'
-
-import Pages from '@/collections/Pages'
-import SVGs from '@/collections/SVGs'
-import Staff from '@/collections/Staff'
-import SeoImages from '@/collections/SeoImages'
-import Media from '@/collections/Media'
-import Images from '@/collections/Images'
-import Videos from '@/collections/Videos'
-import VideoThumbnails from '@/collections/VideoThumbnails'
-
-const globals = [SiteSettings]
-const collections = [
-  Pages,
-  Images,
-  Media,
-  SVGs,
-  Videos,
-  VideoThumbnails,
-  SeoImages,
-  Staff,
-]
+import { collections, Staff } from '@/collections'
+import { globals } from '@/globals'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

@@ -1,108 +1,4 @@
 import gql from 'graphql-tag';
-export const MediaFragmentDoc = gql`
-    fragment Media on Media {
-  id
-  url
-  filename
-  mimeType
-  width
-  height
-  description
-  sizes {
-    xs {
-      url
-      width
-    }
-    sm {
-      url
-      width
-    }
-    md {
-      url
-      width
-    }
-    lg {
-      url
-      width
-    }
-    xl {
-      url
-      width
-    }
-    xxl {
-      url
-      width
-    }
-    xxxl {
-      url
-      width
-    }
-  }
-}
-    `;
-export const ButtonFragmentDoc = gql`
-    fragment Button on Button {
-  label
-  url
-  color
-  variant
-  size
-  openInNewTab
-}
-    `;
-export const HeroBlockFragmentDoc = gql`
-    fragment HeroBlock on HeroBlock {
-  blockType
-  title
-  subtitle
-  content
-  image {
-    ...Media
-  }
-  buttons {
-    ...Button
-  }
-  layout
-  splitRatio
-  mediaPosition
-  mediaOrder
-  overlayOpacity
-  textAlignment
-  minHeight
-}
-    ${MediaFragmentDoc}
-${ButtonFragmentDoc}`;
-export const TextBlockFragmentDoc = gql`
-    fragment TextBlock on TextBlock {
-  blockType
-  content
-}
-    `;
-export const GridBlockFragmentDoc = gql`
-    fragment GridBlock on GridBlock {
-  blockType
-  col_num
-  gap
-  columns {
-    items {
-      ...TextBlock
-    }
-  }
-}
-    ${TextBlockFragmentDoc}`;
-export const SectionBlockFragmentDoc = gql`
-    fragment SectionBlock on SectionBlock {
-  blockType
-  anchorId
-  paddingY
-  width
-  blocks {
-    ...TextBlock
-    ...GridBlock
-  }
-}
-    ${TextBlockFragmentDoc}
-${GridBlockFragmentDoc}`;
 export const ImageFragmentDoc = gql`
     fragment Image on Image {
   id
@@ -147,6 +43,119 @@ export const SvgFragmentDoc = gql`
   url
   width
   height
+}
+    `;
+export const ButtonFragmentDoc = gql`
+    fragment Button on Button {
+  label
+  url
+  color
+  variant
+  size
+  openInNewTab
+}
+    `;
+export const HeroBlockFragmentDoc = gql`
+    fragment HeroBlock on HeroBlock {
+  blockType
+  title
+  subtitle
+  content
+  image {
+    relationTo
+    value {
+      ... on Image {
+        ...Image
+      }
+      ... on SVG {
+        ...SVG
+      }
+    }
+  }
+  buttons {
+    ...Button
+  }
+  layout
+  splitRatio
+  mediaPosition
+  mediaOrder
+  overlayOpacity
+  textAlignment
+  minHeight
+}
+    ${ImageFragmentDoc}
+${SvgFragmentDoc}
+${ButtonFragmentDoc}`;
+export const TextBlockFragmentDoc = gql`
+    fragment TextBlock on TextBlock {
+  blockType
+  content
+}
+    `;
+export const GridBlockFragmentDoc = gql`
+    fragment GridBlock on GridBlock {
+  blockType
+  col_num
+  gap
+  columns {
+    items {
+      ...TextBlock
+    }
+  }
+}
+    ${TextBlockFragmentDoc}`;
+export const SectionBlockFragmentDoc = gql`
+    fragment SectionBlock on SectionBlock {
+  blockType
+  anchorId
+  paddingY
+  width
+  blocks {
+    ...TextBlock
+    ...GridBlock
+  }
+}
+    ${TextBlockFragmentDoc}
+${GridBlockFragmentDoc}`;
+export const MediaFragmentDoc = gql`
+    fragment Media on Media {
+  id
+  url
+  filename
+  mimeType
+  width
+  height
+  description
+  sizes {
+    xs {
+      url
+      width
+    }
+    sm {
+      url
+      width
+    }
+    md {
+      url
+      width
+    }
+    lg {
+      url
+      width
+    }
+    xl {
+      url
+      width
+    }
+    xxl {
+      url
+      width
+    }
+    xxxl {
+      url
+      width
+    }
+  }
 }
     `;
 export const SeoImageFragmentDoc = gql`

@@ -10,7 +10,6 @@ export function useScrollSpy(
 ) {
   // 2. Only register listeners once globally
   if (!isInitialized && import.meta.client) {
-    console.log('usecroll')
     const { y } = useWindowScroll()
 
     const update = () => {

@@ -5,7 +5,7 @@ import type { CollectionConfig } from 'payload'
 import { slugField } from '@/fields/slug'
 import { layoutField } from '@/fields/layout'
 
-const Pages: CollectionConfig = {
+export const Pages: CollectionConfig = {
   slug: 'pages',
 
   // Define which fields to select when populating this document from relationships
@@ -52,5 +52,3 @@ const Pages: CollectionConfig = {
     layoutField,
   ],
 }
-
-export default Pages

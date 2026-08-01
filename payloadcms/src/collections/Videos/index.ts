@@ -7,7 +7,7 @@ import {
 
 import type { CollectionConfig } from 'payload'
 
-const Videos: CollectionConfig = {
+export const Videos: CollectionConfig = {
   slug: 'videos',
   access: {
     read: () => true,
@@ -44,5 +44,3 @@ const Videos: CollectionConfig = {
     },
   ],
 }
-
-export default Videos

@@ -129,6 +129,6 @@ header.scroll {
 }
 
 section[id] {
-  scroll-margin-top: 80px; /* match your header height */
+  scroll-margin-top: 64px; /* match your header height */
 }
 </style>

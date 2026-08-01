@@ -9,12 +9,7 @@ export const useLivePreview = <T>(props: {
 } => {
   const route = useRoute()
   const runtimeConfig = useRuntimeConfig()
-  // 1. Point this explicitly to your CMS domain in production,
-  //    and fall back to whatever runtimeConfig has for local dev.
-  // const serverURL =
-  //   process.env.NODE_ENV === 'production'
-  //     ? 'https://nuxt-payload-template-payloadcms.vercel.app' // Your live Payload Vercel domain
-  //     : runtimeConfig.public.payloadUrl
+
   const serverURL = runtimeConfig.public.payloadUrl
   const apiRoute = runtimeConfig.public.payloadApiRoute
 

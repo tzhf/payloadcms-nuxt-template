@@ -1,9 +1,9 @@
 import { hashFilename } from '@/hooks/hashFilename'
-import { normaliseSvg } from './hooks'
+import { normaliseSvg } from './hooks/normaliseSvg'
 
 import type { CollectionConfig } from 'payload'
 
-const Svgs: CollectionConfig = {
+export const SVGs: CollectionConfig = {
   slug: 'svgs',
   labels: {
     singular: 'SVG',
@@ -34,5 +34,3 @@ const Svgs: CollectionConfig = {
   },
   fields: [],
 }
-
-export default Svgs

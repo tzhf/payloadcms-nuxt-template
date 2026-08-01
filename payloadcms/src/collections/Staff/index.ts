@@ -7,7 +7,7 @@ import type {
   FieldHook,
   Validate,
 } from 'payload'
-import type { Staff } from 'payload-types'
+import type { Staff as StaffType } from 'payload-types'
 
 const roleOptions = [
   {
@@ -25,11 +25,12 @@ type Role = (typeof roleOptions)[number]['value']
 const getRoleIndex = (role: Role) =>
   roleOptions.findIndex(({ value }) => role === value)
 
-const isCurrentUser: Access<Staff> = ({ req: { user }, id }) => user?.id === id
-const isUpdatingSuperAdmin: Access<Staff> = ({ data }) =>
+const isCurrentUser: Access<StaffType> = ({ req: { user }, id }) =>
+  user?.id === id
+const isUpdatingSuperAdmin: Access<StaffType> = ({ data }) =>
   data?.role === 'super_admin'
 
-const StaffCollection: CollectionConfig = {
+export const Staff: CollectionConfig = {
   slug: 'staff',
 
   admin: {
@@ -76,7 +77,7 @@ const StaffCollection: CollectionConfig = {
               (({ data }) =>
                 data
                   ? [data.firstName, data.lastName].join(' ')
-                  : '') as FieldHook<Staff>,
+                  : '') as FieldHook<StaffType>,
             ],
           },
         },
@@ -106,12 +107,10 @@ const StaffCollection: CollectionConfig = {
         }
 
         return true
-      }) as Validate<string, Staff>,
+      }) as Validate<string, StaffType>,
       required: true,
       saveToJWT: true,
       options: roleOptions,
     },
   ],
 }
-
-export default StaffCollection

@@ -12,7 +12,7 @@ const sizes = {
   xxxl: 2400,
 }
 
-const Images: CollectionConfig = {
+export const Images: CollectionConfig = {
   slug: 'images',
   access: {
     read: () => true,
@@ -53,5 +53,3 @@ const Images: CollectionConfig = {
     },
   ],
 }
-
-export default Images

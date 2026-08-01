@@ -1,5 +1,6 @@
-import type { CollectionConfig, ImageSize } from 'payload'
 import { hashFilename } from '@/hooks/hashFilename'
+
+import type { CollectionConfig, ImageSize } from 'payload'
 
 const sizes = {
   xs: 320,
@@ -11,7 +12,7 @@ const sizes = {
   xxxl: 2400,
 }
 
-const Media: CollectionConfig = {
+export const Media: CollectionConfig = {
   slug: 'media',
   labels: {
     singular: 'Media',
@@ -66,5 +67,3 @@ const Media: CollectionConfig = {
     },
   ],
 }
-
-export default Media

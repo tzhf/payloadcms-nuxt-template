@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-const SeoImages: CollectionConfig = {
+export const SeoImages: CollectionConfig = {
   slug: 'seo-images',
   access: { read: () => true },
   admin: {
@@ -32,5 +32,3 @@ const SeoImages: CollectionConfig = {
     },
   ],
 }
-
-export default SeoImages

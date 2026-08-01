@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { hashFilename } from '@/hooks/hashFilename'
 
-const VideoThumbnails: CollectionConfig = {
+export const VideoThumbnails: CollectionConfig = {
   slug: 'video-thumbnails',
   access: {
     read: () => true,
@@ -34,5 +34,3 @@ const VideoThumbnails: CollectionConfig = {
   },
   fields: [],
 }
-
-export default VideoThumbnails

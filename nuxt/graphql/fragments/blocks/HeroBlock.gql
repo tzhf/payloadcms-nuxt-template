@@ -4,7 +4,15 @@ fragment HeroBlock on HeroBlock {
   subtitle
   content
   image {
-    ...Media
+    relationTo
+      value {
+        ... on Image {
+          ...Image
+        }
+        ... on SVG {
+          ...SVG
+        }
+      }
   }
   buttons {
     ...Button

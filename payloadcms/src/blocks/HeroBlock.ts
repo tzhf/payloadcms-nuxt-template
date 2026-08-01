@@ -43,7 +43,7 @@ export const HeroBlock: Block = {
             {
               name: 'image',
               type: 'upload',
-              relationTo: 'media',
+              relationTo: ['images', 'svgs'],
             },
 
             {
